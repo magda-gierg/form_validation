@@ -13,7 +13,8 @@ class Form extends React.Component {
       animal: [],
       animalError: '',
       tiger_type: '',
-      tigerError: ''
+      tigerError: '',
+      isValid: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,7 +29,10 @@ class Form extends React.Component {
   }
 
   handleCheckboxChange(event) {
-
+//   const value = event.target.value
+//   const {animal} = this.state
+// if animal.includes value{ filtr}
+// else{ animal.push(value)}
 }
 
 
@@ -57,14 +61,14 @@ class Form extends React.Component {
       isError = true
       errors.colourError = 'Please select a colour.'
     }
-    if (animal.length < 2) {
-      isError = true
-      errors.animalError = 'Please select at least 2 animals.'
-    }
-    if (animal.includes("tiger") && !tiger_type.length) {
-      isError = true
-      errors.tigerError = 'Please specify the type of tiger.'
-    }
+    // if (animal.length < 2) {
+    //   isError = true
+    //   errors.animalError = 'Please select at least 2 animals.'
+    // }
+    // if (animal.includes("tiger") && !tiger_type.length) {
+    //   isError = true
+    //   errors.tigerError = 'Please specify the type of tiger.'
+    // }
 
     this.setState({
       ...errors
@@ -79,6 +83,8 @@ class Form extends React.Component {
     const err = this.validate()
     if (err) {
       this.setState({display: 'error'})
+    } else {
+      this.setState({isValid: true})
     }
   }
 
@@ -89,6 +95,9 @@ class Form extends React.Component {
 
 
   render() {
+
+    const {isValid} = this.state
+    if (isValid) return <h1>Your information has been submitted succesfully!</h1>
 
     return (
       <div className="Form">
