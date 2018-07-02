@@ -27,6 +27,10 @@ class Form extends React.Component {
     })
   }
 
+  handleCheckboxChange(event) {
+
+}
+
 
   validate = () => {
     let isError = false
@@ -78,6 +82,11 @@ class Form extends React.Component {
     }
   }
 
+  displayError(errorName) {
+    if (this.state[errorName] !== '')
+    return 'error'
+  }
+
 
   render() {
 
@@ -89,7 +98,7 @@ class Form extends React.Component {
           <fieldset>
             <h3>Your details</h3>
 
-            <p>
+            <p className={this.displayError('emailError')}>
               <label className='label' htmlFor='email'>
                 Email
               </label>
@@ -97,7 +106,7 @@ class Form extends React.Component {
               <span>{this.state.emailError}</span>
             </p>
 
-            <p>
+            <p className={this.displayError('passwordError')}>
               <label className='label' htmlFor='password'>
                 Password
               </label>
@@ -108,7 +117,7 @@ class Form extends React.Component {
 
           <fieldset>
             <h3>Your animal</h3>
-            <p>
+            <p className={this.displayError('colourError')}>
               <label className='label' htmlFor='colour'>
                 Colour
               </label>
@@ -128,28 +137,28 @@ class Form extends React.Component {
                 Animal
               </span>
 
-              <input type='checkbox' name='animal' value='bear' id='bear' />
+              <input type='checkbox' name='animal' value='bear' id='bear' onChange={this.handleCheckboxChange} />
               <label htmlFor='bear'>
                 Bear
               </label>
 
-              <input type='checkbox' name='animal' value='tiger' id='tiger' />
+              <input type='checkbox' name='animal' value='tiger' id='tiger' onChange={this.handleCheckboxChange} />
               <label htmlFor='tiger'>
                 Tiger
               </label>
 
-              <input type='checkbox' name='animal' value='snake' id='snake' />
+              <input type='checkbox' name='animal' value='snake' id='snake' onChange={this.handleCheckboxChange} />
               <label htmlFor='snake'>
                 Snake
               </label>
 
-              <input type='checkbox' name='animal' value='donkey' id='donkey' />
+              <input type='checkbox' name='animal' value='donkey' id='donkey' onChange={this.handleCheckboxChange} />
               <label htmlFor='donkey'>
                 Donkey
               </label>
             </p>
 
-            <p>
+            <p className={this.displayError('tigerError')}>
               <label className='label' htmlFor='tiger_type'>
                 Type of tiger
               </label>
