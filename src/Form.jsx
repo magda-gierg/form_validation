@@ -5,11 +5,17 @@ class Form extends React.Component {
     super(props)
     this.state = {
       email: '',
+      emailError: '',
       password: '',
+      passwordError: '',
       colour: '',
+      colourError: '',
       animal: [],
-      tiger_type: ''
+      animalError: '',
+      tiger_type: '',
+      tigerError: ''
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -20,6 +26,12 @@ class Form extends React.Component {
       [event.target.name]: event.target.value
     })
   }
+
+
+validate = () => {
+
+}
+
 
   handleSubmit(event) {
   event.preventDefault()
@@ -42,6 +54,7 @@ class Form extends React.Component {
                 Email
               </label>
               <input type='text' id='email' name='email' onChange={this.handleChange} />
+              <span>{this.state.emailError}</span>
             </p>
 
             <p>
@@ -49,6 +62,7 @@ class Form extends React.Component {
                 Password
               </label>
               <input className='error' type='password' id='password' name='username' onChange={this.handleChange} />
+              <span>{this.state.passwordError}</span>
             </p>
           </fieldset>
 
@@ -66,6 +80,7 @@ class Form extends React.Component {
                 <option value='black'>Black</option>
                 <option value='brown'>Brown</option>
               </select>
+                <span>{this.state.colourError}</span>
             </p>
 
             <p>
@@ -99,6 +114,7 @@ class Form extends React.Component {
                 Type of tiger
               </label>
               <input type='text' name='tiger_type' id='tiger_type' onChange={this.handleChange} />
+              <span>{this.state.tigerError}</span>
             </p>
           </fieldset>
 
