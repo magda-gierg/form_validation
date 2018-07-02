@@ -4,9 +4,23 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      email: '',
+      password: '',
+      colour: '',
+      animal: [],
+      tiger_type: ''
     }
+    this.handleChange = this.handleChange.bind(this)
   }
+
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+
   render() {
 
     return (
@@ -21,14 +35,14 @@ class Form extends React.Component {
               <label className='label' htmlFor='email'>
                 Email
               </label>
-              <input type='text' id='email' name='email' />
+              <input type='text' id='email' name='email' onChange={this.handleChange} />
             </p>
 
             <p>
               <label className='label' htmlFor='password'>
                 Password
               </label>
-              <input className='error' type='password' id='password' name='username' />
+              <input className='error' type='password' id='password' name='username' onChange={this.handleChange} />
             </p>
           </fieldset>
 
@@ -38,7 +52,7 @@ class Form extends React.Component {
               <label className='label' htmlFor='colour'>
                 Colour
               </label>
-              <select name='colour' id='colour'>
+              <select name='colour' id='colour' onChange={this.handleChange}>
                 <option value=''>Choose colour</option>
                 <option value='blue'>Blue</option>
                 <option value='green'>Green</option>
@@ -78,7 +92,7 @@ class Form extends React.Component {
               <label className='label' htmlFor='tiger_type'>
                 Type of tiger
               </label>
-              <input type='text' name='tiger_type' id='tiger_type' />
+              <input type='text' name='tiger_type' id='tiger_type' onChange={this.handleChange} />
             </p>
           </fieldset>
 
