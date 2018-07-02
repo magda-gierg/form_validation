@@ -22,7 +22,6 @@ class Form extends React.Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
   }
 
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -35,10 +34,11 @@ class Form extends React.Component {
     const {animals} = this.state
 
     if (animals.includes(value)){
-      animals.filter(animal => animal !== value)
+      this.setState({animals: animals.filter(animal => animal !== value)})
+
     }
-    else{ animals.push(value)}
-    this.setState({animals: animals})
+    else {animals.push(value)
+    this.setState({animals: animals})}
   }
 
 
