@@ -10,7 +10,7 @@ class Form extends React.Component {
       passwordError: '',
       colour: '',
       colourError: '',
-      animal: [],
+      animals: [],
       animalError: '',
       tiger_type: '',
       tigerError: '',
@@ -19,6 +19,7 @@ class Form extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
   }
 
 
@@ -29,11 +30,16 @@ class Form extends React.Component {
   }
 
   handleCheckboxChange(event) {
-//   const value = event.target.value
-//   const {animal} = this.state
-// if animal.includes value{ filtr}
-// else{ animal.push(value)}
-}
+
+    const value = event.target.value
+    const {animals} = this.state
+
+    if (animals.includes(value)){
+      animals.filter(animal => animal !== value)
+    }
+    else{ animals.push(value)}
+    this.setState({animals: animals})
+  }
 
 
   validate = () => {
@@ -47,7 +53,7 @@ class Form extends React.Component {
       tigerError: ''
     }
 
-    const {password, email, colour, animal, tiger_type} = this.state
+    const {password, email, colour, animals, tiger_type} = this.state
 
     if (password.length < 8) {
       isError = true
@@ -61,14 +67,14 @@ class Form extends React.Component {
       isError = true
       errors.colourError = 'Please select a colour.'
     }
-    // if (animal.length < 2) {
-    //   isError = true
-    //   errors.animalError = 'Please select at least 2 animals.'
-    // }
-    // if (animal.includes("tiger") && !tiger_type.length) {
-    //   isError = true
-    //   errors.tigerError = 'Please specify the type of tiger.'
-    // }
+    if (animals.length < 2) {
+      isError = true
+      errors.animalError = 'Please select at least 2 animals.'
+    }
+    if (animals.includes("tiger") && !tiger_type.length) {
+      isError = true
+      errors.tigerError = 'Please specify the type of tiger.'
+    }
 
     this.setState({
       ...errors
@@ -141,7 +147,7 @@ class Form extends React.Component {
               <span>{this.state.colourError}</span>
             </p>
 
-            <p>
+            <p className={this.displayError('animalError')}>
               <span className="label" id="animal">
                 Animal
               </span>
@@ -165,6 +171,7 @@ class Form extends React.Component {
               <label htmlFor='donkey'>
                 Donkey
               </label>
+              <span id='animals'>{this.state.animalError}</span>
             </p>
 
             <p className={this.displayError('tigerError')}>

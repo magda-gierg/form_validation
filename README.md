@@ -14,7 +14,7 @@ cd form_validation
 
 Install the Modules:
 ```
-npm instal or yarn install
+npm install or yarn install
 ```
 
 Run the App:
