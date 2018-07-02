@@ -115,3 +115,9 @@ An error class to forms that fail your validation:
 span {
   margin-left: 10px;
 }
+select#colour {
+  padding: 4px;
+}
+span#animal.label {
+  margin: 0;
+}

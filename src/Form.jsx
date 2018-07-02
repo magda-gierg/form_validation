@@ -131,7 +131,7 @@ class Form extends React.Component {
                 Colour
               </label>
               <select name='colour' id='colour' onChange={this.handleChange}>
-                <option value=''>Choose colour</option>
+                <option value=''> Choose colour</option>
                 <option value='blue'>Blue</option>
                 <option value='green'>Green</option>
                 <option value='red'>Red</option>
@@ -142,7 +142,7 @@ class Form extends React.Component {
             </p>
 
             <p>
-              <span className="label">
+              <span className="label" id="animal">
                 Animal
               </span>
 
