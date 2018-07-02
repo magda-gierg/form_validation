@@ -28,15 +28,55 @@ class Form extends React.Component {
   }
 
 
-validate = () => {
+  validate = () => {
+    let isError = false
 
-}
+    const errors = {
+      emailError: '',
+      passwordError: '',
+      colourError: '',
+      animalError: '',
+      tigerError: ''
+    }
+
+    const {password, email, colour, animal, tiger_type} = this.state
+
+    if (password.length < 8) {
+      isError = true
+      errors.passwordError = 'Password must be at least 8 characters long.'
+    }
+    if (!/(.+)@(.+){2,}\.(.+){2,}/.test(email)) {
+      isError = true
+      errors.emailError = 'Invalid email adress.'
+    }
+    if (!colour.length) {
+      isError = true
+      errors.colourError = 'Please select a colour.'
+    }
+    if (animal.length < 2) {
+      isError = true
+      errors.animalError = 'Please select at least 2 animals.'
+    }
+    if (animal.includes("tiger") && !tiger_type.length) {
+      isError = true
+      errors.tigerError = 'Please specify the type of tiger.'
+    }
+
+    this.setState({
+      ...errors
+    })
+
+    return isError
+  }
 
 
   handleSubmit(event) {
-  event.preventDefault()
-
-}
+    event.preventDefault()
+    const err = this.validate()
+    if (err) {
+      this.setState({display: 'error'})
+    }
+  }
 
 
   render() {
@@ -61,7 +101,7 @@ validate = () => {
               <label className='label' htmlFor='password'>
                 Password
               </label>
-              <input className='error' type='password' id='password' name='username' onChange={this.handleChange} />
+              <input className='error' type='password' id='password' name='password' onChange={this.handleChange} />
               <span>{this.state.passwordError}</span>
             </p>
           </fieldset>
@@ -80,7 +120,7 @@ validate = () => {
                 <option value='black'>Black</option>
                 <option value='brown'>Brown</option>
               </select>
-                <span>{this.state.colourError}</span>
+              <span>{this.state.colourError}</span>
             </p>
 
             <p>
