@@ -11,6 +11,7 @@ class Form extends React.Component {
       tiger_type: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
@@ -20,12 +21,17 @@ class Form extends React.Component {
     })
   }
 
+  handleSubmit(event) {
+  event.preventDefault()
+
+}
+
 
   render() {
 
     return (
       <div className="Form">
-        <form method='post' action=''>
+        <form method='post' action='' onSubmit={this.handleSubmit}>
           <h1>Fill out this awesome form</h1>
 
           <fieldset>
