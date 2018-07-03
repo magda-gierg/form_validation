@@ -121,3 +121,6 @@ select#colour {
 span#animal.label {
   margin: 0;
 }
+input#submit {
+  margin-top: 8px;
+}

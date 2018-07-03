@@ -41,7 +41,6 @@ class Form extends React.Component {
     this.setState({animals: animals})}
   }
 
-
   validate = () => {
     let isError = false
 
@@ -83,7 +82,6 @@ class Form extends React.Component {
     return isError
   }
 
-
   handleSubmit(event) {
     event.preventDefault()
     const err = this.validate()
@@ -98,7 +96,6 @@ class Form extends React.Component {
     if (this.state[errorName] !== '')
     return 'error'
   }
-
 
   render() {
 
@@ -185,7 +182,7 @@ class Form extends React.Component {
 
           <fieldset>
             <p>
-              <input type='submit' value='Create account' />
+              <input id='submit' type='submit' value='Create account' />
             </p>
           </fieldset>
 
@@ -194,8 +191,5 @@ class Form extends React.Component {
     )
   }
 }
-
-
-
 
 export default Form
