@@ -1,4 +1,4 @@
-# Springload Form Validation
+# Form Validation
 
 
 ## Setup
@@ -22,11 +22,11 @@ Run the App:
 npm start or yarn start
 ```
 
+App build status:
+[![CircleCI](https://circleci.com/gh/magda-gierg/form_validation.svg?style=svg)](https://circleci.com/gh/magda-gierg/form_validation)
 
+App is available at:
 
-
-
-
-
+https://magda-form-validation.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
